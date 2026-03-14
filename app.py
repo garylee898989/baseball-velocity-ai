@@ -1,14 +1,18 @@
+import os
+import subprocess
+import sys
+
+# 強制安裝 Linux 驅動 (解決 cv2 報錯)
+try:
+    import cv2
+except ImportError:
+    os.system("apt-get update && apt-get install -y libgl1 libglib2.0-0")
+    import cv2
+
 import streamlit as st
-import cv2
 import mediapipe as mp
 from ultralytics import YOLO
-import numpy as np
-import tempfile
-import time
-import math
-import json
-from PIL import Image
-
+# ...其餘代碼維持不變
 # 頁面配置
 st.set_page_config(page_title="Baseball Velocity AI Analyzer", layout="wide")
 
